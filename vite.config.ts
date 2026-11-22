@@ -7,26 +7,26 @@ export default defineConfig({
   server: {
     allowedHosts: true,
   },
-  // plugins: [
+  plugins: [
 
-  //   react(),
+    react(),
 
-  //   VitePWA({
-  //     devOptions: {
-  //       enabled: true,
-  //     },
+    VitePWA({
+      devOptions: {
+        enabled: true,
+      },
 
-  //     registerType: 'autoUpdate',
+      registerType: 'autoUpdate',
 
-  //     manifest: {
-  //       name: 'My React App',
-  //       short_name: 'My App',
-  //       description: 'React PWA',
-  //       theme_color: '#ffffff',
-  //       background_color: '#ffffff',
-  //       display: 'standalone',
-  //       start_url: '/',
-  //     },
-  //   }),
-  // ],
+      manifest: {
+        name: 'Block puzzle',
+        short_name: 'Block puzzle',
+        description: 'game',
+        theme_color: '#ffffff',
+        background_color: '#ffffff',
+        display: 'standalone',
+        start_url: '/',
+      },
+    }),
+  ],
 })
