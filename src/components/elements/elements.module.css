@@ -1,0 +1,27 @@
+.elements {
+  max-width: 520px;
+  width: 100%;
+  padding: 10px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  overflow: visible !important;
+}
+
+.container {
+  width: calc(var(--cell-size) * 5 * 0.6);
+  height: calc(var(--cell-size) * 5 * 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: visible !important;
+}
+
+.container > div {
+  transform: scale(0.6);
+}
+
+.container > div[data-dragging="true"] {
+  transform: scale(1) !important;
+}

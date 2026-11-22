@@ -1,0 +1,49 @@
+.board {
+  position: relative;
+  box-shadow: 0px 0px 0px 1px gray;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+}
+
+.cell {
+  /* border: 1px solid gray; */
+  width: var(--cell-size);
+  height: var(--cell-size);
+
+  position: relative;
+  box-shadow: inset 0px 0px 0px 1px gray;
+}
+
+.fill {
+  background: black;
+
+  /* box-shadow: none; */
+}
+
+.hover {
+  background: #00000045;
+}
+
+.hover.drop {
+  background: transparent;
+}
+
+.remove {
+  transition: 0.15s ease;
+
+  background: rgb(255, 100, 100);
+}
+
+.element {
+  position: absolute;
+  top: calc(var(--y) * var(--cell-size));
+  left: calc(var(--x) * var(--cell-size));
+}
+
+.remove.drop {
+  background: transparent;
+  transition: 50ms;
+}

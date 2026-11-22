@@ -1,0 +1,45 @@
+.element {
+  position: relative;
+  overflow: visible !important;
+  width: fit-content;
+  height: fit-content;
+}
+
+.row {
+  display: flex;
+}
+
+.cell {
+  width: var(--cell-size);
+  height: var(--cell-size);
+}
+
+.full {
+  background: black;
+  box-shadow: inset 0px 0px 0px 1px gray;
+}
+
+.remove {
+  background: rgb(255, 100, 100);
+  transition: 0.15s ease;
+}
+
+.remove.drop {
+  background: transparent;
+  transition: 50ms;
+}
+
+.handle {
+  position: absolute;
+  width: calc(var(--cell-size) * 5);
+  height: calc(var(--cell-size) * 8);
+  top: 50%;
+  /* top: calc(50% - (var(--cell-size) * 3)); */
+  left: 50%;
+  /* calc(-50% + (var(--cell-size) * 3)) */
+  transform: translate(-50%, -50%);
+  /* background: rgba(0, 0, 0, 0.077); */
+  z-index: 1;
+  cursor: grab;
+  touch-action: none;
+}

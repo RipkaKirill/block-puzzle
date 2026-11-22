@@ -1,0 +1,63 @@
+:root {
+  --cell-size: 50px;
+}
+
+* {
+  -moz-user-select: none !important;
+  -khtml-user-select: none !important;
+  -webkit-user-select: none !important ;
+  user-select: none !important;
+  overflow: hidden !important;
+}
+
+.draggable {
+  overflow: visible !important;
+}
+
+@media (max-width: 520px) {
+  :root {
+    --cell-size: 48px;
+  }
+}
+
+@media (max-width: 500px) {
+  :root {
+    --cell-size: 46px;
+  }
+}
+
+@media (max-width: 480px) {
+  :root {
+    --cell-size: 44px;
+  }
+}
+
+@media (max-width: 460px) {
+  :root {
+    --cell-size: 42px;
+  }
+}
+
+@media (max-width: 440px) {
+  :root {
+    --cell-size: 40px;
+  }
+}
+
+@media (max-width: 420px) {
+  :root {
+    --cell-size: 38px;
+  }
+}
+
+@media (max-width: 400px) {
+  :root {
+    --cell-size: 36px;
+  }
+}
+
+@media (max-width: 380px) {
+  :root {
+    --cell-size: 34px;
+  }
+}
