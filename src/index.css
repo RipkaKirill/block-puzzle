@@ -1,5 +1,7 @@
 :root {
-  --cell-size: 50px;
+  --cell-size: 60px;
+  --board-size: 8;
+  --scale-delta: calc((var(--cell-size) * var(--board-size) - 40px) / (15 * var(--cell-size)));
 }
 
 * {
@@ -7,57 +9,60 @@
   -khtml-user-select: none !important;
   -webkit-user-select: none !important ;
   user-select: none !important;
-  overflow: hidden !important;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
-.draggable {
-  overflow: visible !important;
+html,
+body,
+.root,
+.app {
+  overflow: hidden;
 }
 
 @media (max-width: 520px) {
   :root {
-    --cell-size: 48px;
+    --cell-size: calc((520px - 20px - calc(var(--board-size) * 2px)) / var(--board-size));
   }
 }
 
 @media (max-width: 500px) {
   :root {
-    --cell-size: 46px;
+    --cell-size: calc((500px - 20px - calc(var(--board-size) * 2px)) / var(--board-size));
   }
 }
 
 @media (max-width: 480px) {
   :root {
-    --cell-size: 44px;
+    --cell-size: calc((480px - 20px - calc(var(--board-size) * 2px)) / var(--board-size));
   }
 }
 
 @media (max-width: 460px) {
   :root {
-    --cell-size: 42px;
+    --cell-size: calc((460px - 20px - calc(var(--board-size) * 2px)) / var(--board-size));
   }
 }
 
 @media (max-width: 440px) {
   :root {
-    --cell-size: 40px;
+    --cell-size: calc((440px - 20px - calc(var(--board-size) * 2px)) / var(--board-size));
   }
 }
 
 @media (max-width: 420px) {
   :root {
-    --cell-size: 38px;
+    --cell-size: calc((420px - 20px - calc(var(--board-size) * 2px)) / var(--board-size));
   }
 }
 
 @media (max-width: 400px) {
   :root {
-    --cell-size: 36px;
+    --cell-size: calc((400px - 20px - calc(var(--board-size) * 2px)) / var(--board-size));
   }
 }
 
 @media (max-width: 380px) {
   :root {
-    --cell-size: 34px;
+    --cell-size: calc((380px - 20px - calc(var(--board-size) * 2px)) / var(--board-size));
   }
 }

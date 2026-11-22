@@ -1,12 +1,13 @@
 import { createContext, useContext, useState, type FC, type ReactNode } from "react"
-import { EMPTY_BOARD } from "../shared/data/consts"
-import type { Cell, ElementsState, IAppContext, IElementData } from "../shared/types"
+import { DEFAULT_SCORE_DATA, EMPTY_BOARD } from "../shared/data/consts"
+import type { Cell, ElementsState, IAppContext, IElementData, IScoreData } from "../shared/types"
 import { generateElement } from "../shared/helpers/generate-element"
 
 export const AppContext = createContext<IAppContext | null>(null)
 
 const boardFromStorage = localStorage.getItem('board')
 const elementsFromStorage = localStorage.getItem('elements')
+const scoreFromStorage = localStorage.getItem('score')
 
 const getDefaultBoard = () => {
   if (boardFromStorage !== null) {
@@ -21,12 +22,20 @@ const getDefaultElements = () => {
   return [generateElement(), generateElement(), generateElement()]
 }
 
+const getDefaultScoreData = () => {
+  if (scoreFromStorage !== null) {
+    return JSON.parse(scoreFromStorage)
+  }
+  return DEFAULT_SCORE_DATA
+}
+
 export const AppProvider: FC<{ children: ReactNode }> = ({ children }) => {
   const [board, setBoard] = useState<Cell[][]>(getDefaultBoard())
   const [shadowBoard, setShadowBoard] = useState<Cell[][]>(EMPTY_BOARD)
   const [elements, setElements] = useState<ElementsState>(getDefaultElements())
   const [selectedElement, setSelectedElement] = useState<IElementData | null>(null)
   const [droppedElement, setDroppedElement] = useState<IElementData | null>(null)
+  const [scoreData, setScoreData] = useState<IScoreData>(getDefaultScoreData())
 
   const [x, setX] = useState<number | null>(null)
   const [y, setY] = useState<number | null>(null)
@@ -39,7 +48,8 @@ export const AppProvider: FC<{ children: ReactNode }> = ({ children }) => {
       shadowBoard, setShadowBoard,
       elements, setElements,
       droppedElement, setDroppedElement,
-      selectedElement, setSelectedElement
+      selectedElement, setSelectedElement,
+      scoreData, setScoreData
     }}>
       {children}
     </AppContext.Provider>

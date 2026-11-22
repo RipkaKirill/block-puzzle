@@ -11,17 +11,9 @@ function App() {
     <AppProvider>
       <BoardProvider>
         <div className='app'>
-          <Score value={0} />
+          <Score />
           <Board />
           <Elements />
-
-          <div
-            onClick={() => {
-              localStorage.clear()
-            }}
-          >
-            reset
-          </div>
         </div>
       </BoardProvider>
     </AppProvider>

@@ -1,6 +1,5 @@
 .element {
   position: relative;
-  overflow: visible !important;
   width: fit-content;
   height: fit-content;
 }

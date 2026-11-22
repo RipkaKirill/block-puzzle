@@ -1,3 +1,4 @@
+import { useScore } from './use-score';
 import type { DragEndEvent, DragMoveEvent, DragStartEvent } from "@dnd-kit/react"
 import { useAppContext } from "../../providers/app-provider"
 import { Cell, type IElementData } from "../types"
@@ -23,6 +24,7 @@ export const useDndActions = () => {
   } = useAppContext()
 
   const { getIsElementCanDrop, addHoveredCells, addRemovedCells } = useShadowBoard()
+  const { changeScoreData } = useScore()
 
   const onDragStart = (event: DragStartEvent) => {
     const { source } = event.operation;
@@ -41,7 +43,7 @@ export const useDndActions = () => {
     const s = sourceElement.getBoundingClientRect()
     const t = targetElement.getBoundingClientRect()
 
-    const cellSize = t.width / 10
+    const cellSize = t.width / BOARD_SIZE
     const delta = cellSize / 2
 
     const clear = () => {
@@ -86,13 +88,12 @@ export const useDndActions = () => {
       localStorage.setItem('elements', JSON.stringify(changedElements))
       return changedElements
     })
-    localStorage.setItem('board', JSON.stringify(board))
+    changeScoreData(shadowBoard)
 
     setTimeout(() => {
       setBoard(prev => {
         const copy = structuredClone(prev)
         if (selectedElement == null || x == null || y == null) return prev
-        console.log('shadowBoard', shadowBoard)
 
         for (let i = 0; i < BOARD_SIZE; i++) {
           for (let j = 0; j < BOARD_SIZE; j++) {
@@ -108,7 +109,8 @@ export const useDndActions = () => {
             }
           }
         }
-        console.log('copy', copy)
+        localStorage.setItem('board', JSON.stringify(copy))
+
 
         return copy
       })

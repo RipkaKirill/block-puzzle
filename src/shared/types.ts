@@ -21,6 +21,9 @@ export interface IAppContext {
 
   selectedElement: IElementData | null,
   setSelectedElement: Dispatch<SetStateAction<IElementData | null>>,
+
+  scoreData: IScoreData,
+  setScoreData: Dispatch<SetStateAction<IScoreData>>,
 }
 
 // export type Cell = CellState
@@ -41,4 +44,10 @@ export enum Cell {
   REMOVE = 2,
   HOVER = 3,
   HOVER_REMOVE = 4,
+}
+
+export interface IScoreData {
+  value: number
+  combo: number
+  moveCounter: number
 }

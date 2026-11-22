@@ -1,15 +1,19 @@
 import type { FC } from 'react';
+import { useScore } from '../../shared/hooks/use-score';
 import styles from './score.module.css';
 
-interface IProps {
-  value: number
-}
 
-const Score: FC<IProps> = ({ value }) => {
+const Score: FC = () => {
+  const { score, combo } = useScore()
   return (
-    <>
-      <div className={styles.score}>{value}</div>
-    </>
+    <div className={styles.container}>
+      <div className={styles.score}>{score}</div>
+
+      {combo > 0 && (
+        <div className={styles.combo}>x{combo + 1}</div>
+      )}
+
+    </div>
   );
 }
 

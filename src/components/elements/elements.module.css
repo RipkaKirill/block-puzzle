@@ -1,25 +1,24 @@
 .elements {
-  max-width: 520px;
+  max-width: calc(var(--cell-size) * var(--board-size) + 20px);
   width: 100%;
   padding: 10px;
+  height: calc(var(--cell-size) * 5 * var(--scale-delta));
 
   display: flex;
   justify-content: space-between;
   align-items: center;
-  overflow: visible !important;
 }
 
 .container {
-  width: calc(var(--cell-size) * 5 * 0.6);
-  height: calc(var(--cell-size) * 5 * 0.6);
+  width: calc(var(--cell-size) * 5 * var(--scale-delta));
+  height: calc(var(--cell-size) * 5 * var(--scale-delta));
   display: flex;
   align-items: center;
   justify-content: center;
-  overflow: visible !important;
 }
 
 .container > div {
-  transform: scale(0.6);
+  transform: scale(var(--scale-delta));
 }
 
 .container > div[data-dragging="true"] {
