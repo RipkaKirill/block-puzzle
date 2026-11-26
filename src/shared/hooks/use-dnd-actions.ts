@@ -1,10 +1,11 @@
+import type { DragEndEvent, DragMoveEvent, DragStartEvent } from "@dnd-kit/react";
+import { useAppContext } from "../../providers/app-provider";
+import { BOARD_SIZE, EMPTY_BOARD } from "../data/consts";
+import { generateElement } from "../helpers/generate-element";
+import { isCanContinueGame } from '../helpers/is-can-continue-game';
+import { Cell, type IElementData } from "../types";
 import { useScore } from './use-score';
-import type { DragEndEvent, DragMoveEvent, DragStartEvent } from "@dnd-kit/react"
-import { useAppContext } from "../../providers/app-provider"
-import { Cell, type IElementData } from "../types"
-import { BOARD_SIZE, EMPTY_BOARD } from "../data/consts"
-import { useShadowBoard } from "./use-shadow-board"
-import { generateElement } from "../helpers/generate-element"
+import { useShadowBoard } from "./use-shadow-board";
 
 export const useDndActions = () => {
   const {
@@ -13,6 +14,7 @@ export const useDndActions = () => {
     board,
     selectedElement,
     shadowBoard,
+    elements,
 
     setX,
     setY,
@@ -21,6 +23,7 @@ export const useDndActions = () => {
     setShadowBoard,
     setDroppedElement,
     setSelectedElement,
+    setIsGameOver,
   } = useAppContext()
 
   const { getIsElementCanDrop, addHoveredCells, addRemovedCells } = useShadowBoard()
@@ -111,6 +114,9 @@ export const useDndActions = () => {
         }
         localStorage.setItem('board', JSON.stringify(copy))
 
+        if (!isCanContinueGame(copy, elements)) {
+          setIsGameOver(true)
+        }
 
         return copy
       })

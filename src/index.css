@@ -1,7 +1,8 @@
 :root {
   --cell-size: 60px;
   --board-size: 8;
-  --scale-delta: calc((var(--cell-size) * var(--board-size) - 40px) / (15 * var(--cell-size)));
+  --cell-size-value: 60;
+  --scale-delta: calc((var(--cell-size-value) * var(--board-size) - 40) / (15 * var(--cell-size-value)));
 }
 
 * {

@@ -1,6 +1,7 @@
 import { elements } from "../data/elements";
 import { Cell, type CellMatrix, type IElementData } from "../types";
 import { getRandomNumber } from "./get-random-number";
+import { getUuid } from "./get-uuid";
 
 const rotateRight = (matrix: CellMatrix): CellMatrix => {
   const m = matrix[0].length
@@ -61,7 +62,7 @@ export const generateElement = (): IElementData => {
   const element = elements?.[randomNumber]
 
   return {
-    id: crypto.randomUUID(),
+    id: getUuid(),
     cell: rotateElement(element, randomRotation)
   }
 }

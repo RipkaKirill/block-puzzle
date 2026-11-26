@@ -29,5 +29,5 @@ export default defineConfig({
       },
     }),
   ],
-  base: '/block-puzzle/',
+  // base: '/block-puzzle/',
 })

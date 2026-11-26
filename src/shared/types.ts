@@ -24,14 +24,16 @@ export interface IAppContext {
 
   scoreData: IScoreData,
   setScoreData: Dispatch<SetStateAction<IScoreData>>,
+
+  isGameOver: boolean
+  setIsGameOver: Dispatch<SetStateAction<boolean>>,
 }
 
 // export type Cell = CellState
 export type Board = Cell[][]
 export type CellMatrix = Cell[][]
 export type Coordinate = number | null
-
-export type ElementsState = (IElementData | null)[]
+export type ElementsState = IElementData[]
 
 export interface IElementData {
   id: string

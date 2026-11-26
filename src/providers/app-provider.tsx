@@ -2,6 +2,7 @@ import { createContext, useContext, useState, type FC, type ReactNode } from "re
 import { DEFAULT_SCORE_DATA, EMPTY_BOARD } from "../shared/data/consts"
 import type { Cell, ElementsState, IAppContext, IElementData, IScoreData } from "../shared/types"
 import { generateElement } from "../shared/helpers/generate-element"
+import { isCanContinueGame } from "../shared/helpers/is-can-continue-game"
 
 export const AppContext = createContext<IAppContext | null>(null)
 
@@ -36,6 +37,7 @@ export const AppProvider: FC<{ children: ReactNode }> = ({ children }) => {
   const [selectedElement, setSelectedElement] = useState<IElementData | null>(null)
   const [droppedElement, setDroppedElement] = useState<IElementData | null>(null)
   const [scoreData, setScoreData] = useState<IScoreData>(getDefaultScoreData())
+  const [isGameOver, setIsGameOver] = useState<boolean>(!isCanContinueGame(getDefaultBoard(), getDefaultElements()))
 
   const [x, setX] = useState<number | null>(null)
   const [y, setY] = useState<number | null>(null)
@@ -49,7 +51,8 @@ export const AppProvider: FC<{ children: ReactNode }> = ({ children }) => {
       elements, setElements,
       droppedElement, setDroppedElement,
       selectedElement, setSelectedElement,
-      scoreData, setScoreData
+      scoreData, setScoreData,
+      isGameOver, setIsGameOver
     }}>
       {children}
     </AppContext.Provider>
