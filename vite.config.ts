@@ -21,13 +21,14 @@ export default defineConfig({
       manifest: {
         name: 'Block puzzle',
         short_name: 'Block puzzle',
-        description: 'game',
+        description: 'Block Puzzle Game',
         theme_color: '#ffffff',
         background_color: '#ffffff',
         display: 'standalone',
-        start_url: '/',
+        start_url: '/block-puzzle/',
+        scope: '/block-puzzle/',
       },
     }),
   ],
-  // base: '/block-puzzle/',
+  base: '/block-puzzle/',
 })
